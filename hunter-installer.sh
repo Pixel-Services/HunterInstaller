@@ -15,6 +15,11 @@ echo "⏳ Setting update frequency to every $frequency minutes"
 echo "📦 Using iptables chain: $chain"
 
 curl -fsSL https://raw.githubusercontent.com/pebblehost/hunter/refs/heads/master/block.sh -o /usr/local/bin/block.sh
+
+if ! head -n 1 /usr/local/bin/block.sh | grep -q "^#!/bin/bash"; then
+  sed -i '1i#!/bin/bash' /usr/local/bin/block.sh
+fi
+
 chmod +x /usr/local/bin/block.sh
 
 sed -i "s/DOCKER-USER/$chain/g" /usr/local/bin/block.sh
@@ -43,6 +48,7 @@ Persistent=true
 WantedBy=timers.target
 EOF
 
+# Reload systemd and enable timer
 systemctl daemon-reexec || systemctl daemon-reload
 systemctl enable --now blocklist-update.timer
 
