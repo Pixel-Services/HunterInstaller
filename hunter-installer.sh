@@ -14,7 +14,7 @@ chain="${chain:-DOCKER-USER}"
 echo "⏳ Setting update frequency to every $frequency minutes"
 echo "📦 Using iptables chain: $chain"
 
-curl -fsSL https://raw.githubusercontent.com/pebblehost/hunter/refs/heads/master/block.sh -o /usr/local/bin/block.sh
+curl -fsSL https://raw.githubusercontent.com/Pixel-Services/HunterInstaller/refs/heads/main/block.sh -o /usr/local/bin/block.sh
 
 if ! head -n 1 /usr/local/bin/block.sh | grep -q "^#!/bin/bash"; then
   sed -i '1i#!/bin/bash' /usr/local/bin/block.sh
