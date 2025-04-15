@@ -6,10 +6,12 @@ This tool is based on [PebbleHost's Hunter](https://github.com/pebblehost/hunter
 
 ## 🚀 Quick Install
 
-Run this one-liner as root:
+Run the following commands in your terminal:
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/Pixel-Services/HunterInstaller/refs/heads/main/hunter-installer.sh | bash
+curl -fsSL https://raw.githubusercontent.com/Pixel-Services/HunterInstaller/refs/heads/main/hunter-installer.sh -o hunter-installer.sh
+chmod +x hunter-installer.sh
+./hunter-installer.sh
 ```
 
 ## 🔧 During Setup
@@ -32,4 +34,12 @@ systemctl status blocklist-update.timer
 ## 📕 Check Logs
 ```bash
 journalctl -u blocklist-update.service
+```
+
+## 🗑️ Uninstalling
+
+Run the following one-liner to get rid of hunter and it's files and configurations:
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/Pixel-Services/HunterInstaller/refs/heads/main/hunter-uninstall.sh | bash
 ```
